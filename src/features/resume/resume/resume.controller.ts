@@ -11,7 +11,9 @@ import { ResumeService } from './resume.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ResumeValidationPipe } from 'src/common/pipes/resume-validation.pipe'; // Import ResumeValidationPipe
 import { TransformFileNamePipe } from 'src/common/pipes/transform-file-name';
+import { LoggingInterceptor } from 'src/common/interceptors/logging.interceptor';
 @Controller('resume')
+@UseInterceptors(LoggingInterceptor) // Add LoggingInterceptor
 export class ResumeController {
   constructor(private readonly resumeService: ResumeService) {}
 
